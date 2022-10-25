@@ -59,13 +59,13 @@ near dev-deploy ./target/wasm32-unknown-unknown/release/gravity_near.wasm
 Execute change method (*you have to be logged in with the **same** NEAR wallet used for deployment*)
 
 ```bash
-near call --accountId YOUR-WALLET-ID.TESTNET DEV-ACCOUNT-USED-FOR-DEPLOYMENT signTerms '{"signer_string":"SET_HASH_VALUE","signer_signature_string":"SET_HEX_VALUE","terms_hash_string":"SET_HASH_VALUE","terms_version_string":"SET_HASH_VALUE"}'
+near call --accountId YOUR-WALLET-ID.TESTNET DEV-ACCOUNT-USED-FOR-DEPLOYMENT signTerms '{"signer_string":"SET_HASH_VALUE","signer_signature_string":"SET_HEX_VALUE","terms_hash_string":"SET_HASH_VALUE"}'
 ```
 
 Execute view method (*with **any** logged in wallet*)
 
 ```bash
-#near call --accountId ANY-WALLET-ID.TESTNET ANY-ACCOUNT records '{"record_id_str":"SET_HASH_VALUE"}'
+near call --accountId ANY-WALLET-ID.TESTNET ANY-ACCOUNT validateSignature '{"signer_string":"SET_HASH_VALUE","terms_hash_string":"SET_HASH_VALUE"}'
 ```
 
 ---
