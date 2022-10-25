@@ -136,7 +136,7 @@ impl TermsOfService {
         self.signatures.insert(&signee_terms_keccak256_hash_bytes, &signature);
     }
 
-    pub fn validateSignature(&mut self,
+    pub fn validateSignature(self,
                              signer_string: String,
                              terms_hash_string: String) -> (String,
                                                             String,
