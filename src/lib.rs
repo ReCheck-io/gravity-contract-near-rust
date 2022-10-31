@@ -255,6 +255,10 @@ mod tests {
             signer_signature_string,
             terms_hash_string): (String, String, String) = create_random_sign_terms_input();
 
+        log!("signer_key_string{:?}",signer_key_string.clone());
+        log!("signer_signature_string{:?}",signer_signature_string.clone());
+        log!("terms_hash_string{:?}",terms_hash_string.clone());
+
         contract.signTerms(signer_key_string.clone(),
                            signer_signature_string.clone(),
                            terms_hash_string.clone());
@@ -288,6 +292,10 @@ mod tests {
             signer_signature_string,
             terms_hash_string): (String, String, String) = create_random_sign_terms_input();
 
+        log!("signer_key_string{:?}",signer_key_string.clone());
+        log!("signer_signature_string{:?}",signer_signature_string.clone());
+        log!("terms_hash_string{:?}",terms_hash_string.clone());
+
         contract.signTerms(signer_key_string.clone(),
                            signer_signature_string.clone(),
                            terms_hash_string.clone());
@@ -307,6 +315,9 @@ mod tests {
         let (signer_key_string,
             _signer_signature_string,
             terms_hash_string): (String, String, String) = create_random_sign_terms_input();
+
+        log!("signer_key_string{:?}",signer_key_string.clone());
+        log!("terms_hash_string{:?}",terms_hash_string.clone());
 
         let result: (String, String, String, Timestamp) = contract.validateSignature(
             signer_key_string.clone(),
@@ -331,6 +342,10 @@ mod tests {
             _signer_signature_string,
             _terms_hash_string): (String, String, String) = create_random_sign_terms_input();
 
+        log!("wrong_signer_key_string{:?}",wrong_signer_key_string.clone());
+        log!("signer_signature_string{:?}",signer_signature_string.clone());
+        log!("terms_hash_string{:?}",terms_hash_string.clone());
+
         TermsOfService::verify_message_signature(wrong_signer_key_string.clone(),
                                                  signer_signature_string.clone(),
                                                  terms_hash_string.clone());
@@ -352,6 +367,10 @@ mod tests {
             wrong_signer_signature_string,
             _terms_hash_string): (String, String, String) = create_random_sign_terms_input();
 
+        log!("signer_key_string{:?}",signer_key_string.clone());
+        log!("wrong_signer_signature_string{:?}",wrong_signer_signature_string.clone());
+        log!("terms_hash_string{:?}",terms_hash_string.clone());
+
         contract.signTerms(signer_key_string.clone(),
                            wrong_signer_signature_string.clone(),
                            terms_hash_string.clone());
@@ -371,6 +390,9 @@ mod tests {
 
         let wrong_terms_hash_string: String = create_random_hash_string();
 
+        log!("signer_key_string{:?}",signer_key_string.clone());
+        log!("signer_signature_string{:?}",signer_signature_string.clone());
+        log!("wrong_terms_hash_string{:?}",wrong_terms_hash_string.clone());
 
         contract.signTerms(signer_key_string.clone(),
                            signer_signature_string.clone(),
@@ -417,7 +439,7 @@ mod tests {
 
         let result_hex_bytes: CryptoHash = TermsOfService::string_to_hex_bytes(hex_string_input.clone());
 
-        log!("result{:?}",result_hex_bytes);
+        log!("result bytes{:?}",result_hex_bytes);
 
         let expected_hex_bytes: CryptoHash = [160, 172, 88, 147, 196, 53, 206, 5, 6, 186, 34, 112, 24, 245, 208, 182, 30, 55, 27, 223, 253, 185, 16, 48, 184, 181, 2, 219, 99, 46, 224, 32];
 
@@ -426,7 +448,7 @@ mod tests {
         let hex_string_result: String = TermsOfService::hex_bytes_to_string(result_hex_bytes.clone
         ());
 
-        log!("result{:?}",hex_string_result);
+        log!("result string{:?}",hex_string_result);
 
         assert_eq!(hex_string_result, hex_string_input);
     }
@@ -439,7 +461,7 @@ mod tests {
         let result_sign_hex_bytes: [u8; 64] = TermsOfService::signature_string_to_hex_bytes
             (sign_hex_string_input.clone());
 
-        log!("result{:?}",result_sign_hex_bytes);
+        log!("result bytes{:?}",result_sign_hex_bytes);
 
         let expected_sign_hex_bytes: [u8; 64] = [211, 79, 49, 130, 162, 44, 39, 160, 97, 51, 65, 155, 240, 185, 8, 168, 84, 47, 116, 151, 119, 129, 164, 113, 122, 239, 89, 129, 252, 88, 179, 175, 50, 147, 249, 13, 231, 229, 220, 99, 113, 245, 92, 195, 87, 251, 203, 199, 21, 147, 217, 91, 72, 6, 103, 102, 144, 170, 227, 77, 204, 131, 230, 15];
 
@@ -447,7 +469,7 @@ mod tests {
 
         let sing_hex_string_result: String = TermsOfService::signature_hex_bytes_to_string(result_sign_hex_bytes.clone());
 
-        log!("result{:?}",sing_hex_string_result);
+        log!("result string{:?}",sing_hex_string_result);
 
         assert_eq!(sing_hex_string_result, sign_hex_string_input);
     }
