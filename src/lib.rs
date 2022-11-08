@@ -122,9 +122,11 @@ impl TermsOfService {
     }
 }
 
+//Write functions
 #[near_bindgen]
 #[allow(non_snake_case)]
 impl TermsOfService {
+    #[private]
     #[allow(non_snake_case)]
     pub fn signTerms(&mut self,
                      signer_key_string: String,
@@ -153,7 +155,12 @@ impl TermsOfService {
 
         self.signatures.insert(&signee_terms_keccak256_hash_bytes, &signature);
     }
+}
 
+//Read-only functions
+#[near_bindgen]
+#[allow(non_snake_case)]
+impl TermsOfService {
     #[allow(non_snake_case)]
     pub fn validateSignature(self,
                              signer_key_string: String,

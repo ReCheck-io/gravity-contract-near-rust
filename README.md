@@ -121,6 +121,22 @@ Execute view method (*with **any** logged in wallet*)
 near view --accountId ANY-WALLET-ID.TESTNET ACCOUNT-USED-FOR-DEPLOYMENT validateSignature '{"signer_string":"SET_HASH_VALUE","terms_hash_string":"SET_HASH_VALUE"}'
 ```
 
+### 5. Function Call Keys
+
+If you don't want to use the Full Access Keys you can create Function Call Keys for the smart contract account.
+
+First generate the new key.
+
+```bash
+near generate-key
+```
+
+Then add the newly created key to the smart contract account.
+
+```bash
+near add-key ACCOUNT-USED-FOR-DEPLOYMENT NEWLY_CREATED_PUB_KEY --contract-id ACCOUNT-USED-FOR-DEPLOYMENT
+```
+
 ---
 
 # Learn More
